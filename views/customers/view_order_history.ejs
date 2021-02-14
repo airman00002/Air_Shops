@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+
+<body>
+     <%-include ../layout%>
+          <div class="container">
+               <div class="head-title my-4 text-right">
+                    <h2>รายละเอียดการสั่งซื้อสินค้า</h2>
+               </div>
+               <hr>
+
+               <div class="row">
+                    <div class="col-8">
+                         <label><strong>ร้านค้า :</strong></label>
+                         <p>Air_Shops</p>
+                         <p>118 ม.3 ต.บ้านลำนาว อ.บางขัน</p>
+                         <p>จ.นครศรีธรรมราช 80360</p>
+                         <p>โทร : 093-7931096</p>
+                    </div>
+                    <div class="col-4 text-left">
+                         <label><strong>ผู้ซื้อสินค้า</strong></label>
+                         
+                              <p>ชื่อ :<%=orders.name%>
+                              </p>
+                              <p>อีเมลล์ :<%=orders.email%>
+                              </p>
+                              <p>ที่อยู่ :<%=orders.city%>
+                              </p>
+                              <p>ไปรษณีย์ :<%=orders.postcode%>
+                              </p>
+
+                             
+                    </div>
+               </div>
+
+               <hr>
+
+               <div class="head-title my-4 text-left">
+                    <h3><strong>รายการสั่งซื้อ</strong></h3>
+               </div>
+
+               <div class="table">
+                    <table class="table">
+                         <thead class="thead-light text-center">
+                              <tr>
+                                   <th scope="col"> <h4>ภาพสินค้า</h4></th>
+                                   <th scope="col"> <h4>ชื่อสินค้า</h4></th>
+                                   <th scope="col"> <h4>ราคา</h4></th>
+                                   <th scope="col"> <h4>จำนวน</h4></th>    
+                                   <th scope="col"> <h4>รวม</h4></th>    
+                              </tr>
+                         </thead>
+                         <tbody class="text-center">
+                              <%orders.order_item.forEach(item=>{%>
+                                   <tr>
+                                        
+                                        <td> <a href="/customers/product/<%=item.id%>"><img src="/images/<%=item.img%>" width="40px" height="40px"></a></td>
+                                        <td><%=item.name%></td>
+                                        <td><%=formatNumber(item.price)%> บาท</td>
+                                        <td><%=item.quantity%></td>
+                                        <td><%=formatNumber(item.quantity*item.price)%> บาท</td>
+
+                                        
+                                   </tr>
+                              <%})%>
+                         </tbody>
+                    </table>
+                    <h3 class="text-right">ยอดชำระเงิน : <%=formatNumber(orders.total)%> บาท</h3>
+               </div>
+
+               <div class="print">
+                    <button class="btn btn-outline-secondary" onclick="window.print()">พิมพ์ใบสั่งซื้อ</button>
+               </div>
+
+          </div>
+</body>
+
+</html>

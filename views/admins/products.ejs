@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+
+<body>
+     <%-include ../layout%>
+          <div class="container">
+
+               <div class="row">
+                    <!--* sidebar  ------------------>
+                    <%-include ../sidebar%>
+                         <div class="col-lg-9">
+                              <div class="text-center my-4">
+                                   <h3><strong>ข้อมูลสินค้า</strong></h3>
+                              </div>
+                              <div class="table my-4">
+                                   <table class="table">
+                                        <thead class="thead-light">
+                                             <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">ชื่อสินค้า</th>
+                                                  <th scope="col">ราคาสินค้า</th>
+                                                  <th scope="col">แก้ไขข้อมูล</th>
+                                                  <th scope="col">ลบข้อมูล</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody>
+                                             <%for(let i=0;i<products.length;i++){%>
+                                                  <tr>
+                                                       <th scope="row"><%=(i+1)%></th>
+                                                       <td class="text-primary"><%=products[i].name%></td>
+                                                       <td class="text-secondary"><%=formatNumber(products[i].price)%> ฿</td>
+                                                       <td><a href="/admins/products/edit/<%=products[i]._id%>" class="btn btn-outline-warning">แก้ไข</a></td>
+                                                       <td><a href="/admins/products/delete/<%=products[i]._id%>" onclick="return confirm('ต้องการลบสินค้าหรือไม่')" class="btn btn-outline-danger">ลบ</a></td>
+                                                  </tr>
+                                             <%}%>
+                                        </tbody>
+                                   </table>
+                              </div>
+
+
+
+                         </div>
+
+               </div>
+          </div>
+
+</body>
+
+</html>

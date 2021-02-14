@@ -1,0 +1,20 @@
+<div class="col-lg-3">
+     <h1 class="my-4">Air_Shops</h1>
+     <%if(locals.user.type=='admin'){%>
+          <div class="list-group">
+               <%Object.values(categories).forEach(category=>{%>
+                    <a href="/admins/product/?category=<%=category.name%>" class="list-group-item text-secondary"><%=category.name%></a>
+               <%})%>
+               <a href="/admins/categories/add" class="btn btn-outline-info my-2" >เพิ่มหมวดหมู่สินค้า</a>
+               <a  href="/admins/products/add" class="btn btn-outline-info my-2"><strong>เพิ่มสินค้า</strong></a>
+          </div>
+     <%}%>
+
+     <%if(locals.user.type=='customer'){%>
+          <div class="list-group">
+               <%Object.values(categories).forEach(category=>{%>
+                    <a href="/customers/product/?category=<%=category.name%>" class="list-group-item text-secondary"><%=category.name%></a>
+               <%})%>
+          </div>
+     <%}%>
+</div>

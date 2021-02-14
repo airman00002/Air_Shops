@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+  integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <%if(locals.user.type=='admin'){%>
+    <a class="navbar-brand" href="/<%=user.type%>s/home"><strong>Air_Shops</strong></a>
+  <%}%>
+  <%if(locals.user.type=='customer'){%>
+      <a class="navbar-brand" href="/<%=user.type%>s/home"><strong>Air_Shops</strong></a>
+    <%}%>
+
+
+  <%if(user=='admin'){%>
+    <a class="navbar-brand" href="/<%=user%>s/home"><strong>Air_Shops</strong></a>
+  <%}%>
+  <%if(user=='customer'){%>
+    <a class="navbar-brand" href="/<%=user%>s/home"><strong>Air_Shops</strong></a>
+  <%}%>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <%if(locals.user.type=='customer' || user=='customer' ){%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <strong><i class="fas fa-user"></i> :<%=user.username%></strong>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/customers/view_order">ประวัติการชื้อสินค้า</a>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/customers/cart"><strong><i class="fas fa-shopping-cart"></i> : <%=cart_num%></strong></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/users/logout"><strong>ออกจากระบบ</strong></a>
+          </li>
+        <%}%>
+
+        <%if(locals.user.type=='admin' || user=='admin' ){%>
+              <!-- <li class="nav-item ">
+          <a class="nav-link" href="/admins/products/add"><strong>เพิ่มสินค้า</strong></a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <strong><i class="fas fa-users-cog"></i> :<%=user.username%></strong>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admins/products">จัดการสินค้า</a>
+            <a class="dropdown-item" href="/admins/categories">จัดการหมวดหมู่</a>
+          </div>
+        </li>
+
+        <li class="nav-item ">
+          <a class="nav-link" href="/admins/clients"><strong>รายชื่อลูกค้า</strong></a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="/users/logout"><strong>ออกจากระบบ</strong></a>
+        </li>
+        <%}%>
+
+        <%if(!locals.user){%>
+          <li class="nav-item ">
+            <a class="nav-link" href="/users/register"><strong>ลงทะเบียน</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/login"><strong>เข้าใช้งาน</strong></a>
+          </li>
+        <%}%>
+      </ul>
+
+      <%if(locals.user.type=='customer' || user=='customer' ){%>
+        <form class="form-inline my-2 my-lg-0" action="/customers/product/" method="GET">
+          <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      <%}%>
+
+      <%if(locals.user.type=='admin' || user=='admin' ){%>
+        <form class="form-inline my-2 my-lg-0" action="/admins/product/" method="GET">
+          <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search"
+            aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      <%}%>
+
+    </div>
+</nav>

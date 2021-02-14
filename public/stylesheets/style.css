@@ -1,0 +1,16 @@
+body {
+  background-image: linear-gradient(to right, rgba(91, 181, 230, 0.267), rgb(235, 248, 253))
+ 
+}
+a {
+  color: #00B7FF;
+}
+footer{
+  padding: 30px;
+}
+.container{
+  min-height: 100%;
+}
+html,body{
+  height: 90.8%;
+}

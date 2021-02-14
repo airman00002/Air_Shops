@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+
+<body>
+     <%-include ../layout%>
+          <div class="container">
+               <div class="messages offset-lg-4 col-lg-4 my-4">
+                    <%- messages() %>
+               </div>
+               <div class="row">
+                    <!--* sidebar  ------------------>
+                    <%-include ../sidebar%>
+                    <div class="col-lg-9">
+                         <div class="row my-4 ">
+                              <%products.forEach(product=>{%>
+                                   <div class="col-lg-4 col-md-6  mb-4">
+                                        <div class="card h-100" style="border-radius: 30px;overflow: hidden;">
+                                             <a href="/admins/product/<%=product._id%>"><img src="/images/<%=product.img%>" width="300px" height="300px" class="card-img-top" ></a>    
+                                             <div class="card-body">
+                                                  <a href="/admins/product/<%=product._id%>"><h4 class="card-title"><%=product.name%></h4></a>
+                                                  <h5 class="text-warning"><%=formatNumber(product.price)%> ฿</h5>
+                                                  <p class="card-text text-secondary"><%=textString(product.description,12)%></p>
+                                             </div>
+                                             <div class="card-footer row">
+                                                 <div class="col-6">
+                                                       <a href="/admins/products/edit/<%=product._id%>" class="btn btn-outline-warning">แก้ไข</a>
+                                                 </div>
+                                                 <div class="col-6 text-center">
+                                                       <a href="/admins/products/delete/<%=product._id%>" onclick="return confirm('ต้องการลบสินค้าหรือไม่')" class="btn btn-outline-danger">ลบ</a>
+                                                 </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              <%})%>
+                                        <!--*------------------------------------------------------------------------------  -->
+
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+          <script>
+               $('#messages').addClass('alert alert-success')
+          </script>
+</body>
+
+</html>

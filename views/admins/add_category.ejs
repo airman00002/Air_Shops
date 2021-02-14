@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+
+<body>
+     <%-include ../layout%>
+          <div class="container">
+             
+               <div class="row">
+                    <!--* sidebar  ------------------>
+                    <%-include ../sidebar%>
+                    <div class="col-lg-9">
+                         <div class="text-center my-4">
+                              <h3><strong>แบบฟอร์มเพิ่มหมวดหมู่สินค้า</strong></h3>
+                         </div>
+                         <div class="errors">
+                          <%if(locals.errors){%>
+                              <ul class="alert alert-danger">
+                                   <%Object.values(errors).forEach(error=>{%>
+                                        <li class="mx-2"><%=error.msg%></li>
+                                   <%})%>
+                              </ul>
+                              <%}%>
+                         </div>
+                         <form action="/admins/categories/add" method="post">
+                              <div class="form-group">
+                                   <label><strong>ชื่อหมวดหมู่สินค้า</strong></label>
+                                   <input type="text" name="name" class="form-control">
+                              </div>
+                              <div class="form-group text-center">
+                                   <input type="submit" value="บันทึกหมวดหมู่" class="btn btn-outline-primary">
+                              </div>
+                         </form>
+                           
+
+                         
+                    </div>
+
+               </div>
+          </div>
+         
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+<body>
+     <%include layout%>
+     <div class="container offset-lg-4 offset-md-3 col-lg-4 col-md-6 my-4">
+          <h3 class="text-center">Login</h3>
+          <%if(locals.errors){%>
+               <ul class="alert alert-danger">
+                    <%Object.values(errors).forEach(error=>{%>
+                         <li class="mx-2"><%=error.msg%></li>
+                    <%})%>
+               </ul>
+          <%}%>
+          <!--TODO---messages  -->
+          
+          <div class="messages ">
+               <%- messages() %>
+          </div>
+         
+
+          <form action="/users/login" method="post">
+             
+               <div class="form-group">
+                    <label><strong>Username</strong></label>
+                    <input type="text" name="username" class="form-control">
+               </div>
+               <div class="form-group">
+                    <label><strong>Password</strong></label>
+                    <input type="password" name="password" class="form-control">
+               </div>
+              
+               <div class="form-group text-center">
+                    <input type="submit" value="เข้าใช้งาน" class="btn btn-outline-success">
+               </div>
+               
+          </form>
+
+          <script>
+               $('#messages').addClass('alert alert-danger')
+          </script>
+     </div>
+</body>
+</html>

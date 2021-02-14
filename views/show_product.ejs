@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+
+<body>
+     <%-include layout%>
+          <div class="container my-4">
+                         <div class="img text-center">
+                              <img src="/images/<%=products.img%>" width="50%" class="img-thumbnail">
+                         </div>
+                         <div class="body ">
+                              <h3>ชื่อ : <%=products.name%></h3>
+                              <h4>ราคา : <%=formatNumber(products.price)%> ฿</h4> 
+                              <%if(user=='customer'){%>
+                              <form action="/customers/cart" method="post"align="">
+                                   <input type="hidden" name="id" value="<%=products._id%>">
+                                   <input type="submit" value="เพิ่มสินค้าลงตะกร้า" class="btn btn-outline-secondary">
+                              </form>
+                              <%}%>
+
+                              <p><%=products.description%></p>
+                              <h5>ประเภท : <%=products.category%></h5>
+                         </div>
+                         
+          </div>
+</body>
+
+</html>

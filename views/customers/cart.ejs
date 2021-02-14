@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+<body>
+     <%-include ../layout%>
+
+     <div class="container">
+          <div class="title text-center my-4">
+               <h3><strong>ตะกร้าสินค้า</strong></h3>
+          </div>
+          <!----------------------->
+          <%if(cart.item.length>0){%>
+               <div class="table my-4">
+                    <table class="table">
+                         <thead class="table-secondary text-center">
+                              <tr>
+                                   <th scope="col">#</th>
+                                   <th scope="col">#</th>
+                                   <th scope="col">ชื่อสินค้า</th>
+                                   <th scope="col">จำนวน</th>
+                                   <th scope="col">ราคา</th>
+                                   <th></th>
+                              </tr>
+                         </thead>
+                         <tbody class="text-center ">
+                         <%for(let i=0;i<cart.item.length;i++){%>
+                              <tr>
+                                   <th scope="row"><%=(i+1)%></th>
+                                   <th><img src="/images/<%=cart.item[i].img%>" width="35px" height="35px"></th>
+                                   <td><a href="/customers/product/<%=cart.item[i].id%>"><%=cart.item[i].name%></a></td>
+                                   <td><%=cart.item[i].quantity%></td>
+                                   <td class="text-secondary"><%=formatNumber(cart.item[i].price)%> บาท</td>
+                                   <td><a href="/customers/cart/?id=<%=cart.item[i].id%>" onclick=" return confirm('ลบสินค้า')" ><i class="fas fa-times"></i></a></td>
+                              </tr>
+                         <%}%>
+                         </tbody>
+                    </table>
+               </div>
+               <div class="total text-right">
+                    <h4><strong>ยอดรวม :<%=formatNumber(cart.total)%> บาท</strong></h4>
+               </div>
+
+          <!--TODO-- method-post-payment-----**view app** -->
+               <form action="/customers/payment" method="post">
+                    <!--*--ชำระเงิน  *Token*-->
+                         <script src="https://checkout.stripe.com/checkout.js"
+                              class="stripe-button"
+                              data-key="pk_test_51I5CPxHXfE95nDyQTZphbksTIlRzKh6ARYrYfCmMk2KseVRgJ3A5sN4tRm6O9vVkjoHxPzemM4DOsxoqUAxmFtyM00i3zkwQ6o"
+                              data-name="Air Shops"
+                              data-description="ยืนยันการชำระเงิน"
+                              data-amount="<%=cart.total *100%>"
+                              data-currency="thb"
+                              data-locale="thailand"
+                              data-shipping-address="true"
+                              data-billing-address="true"
+                              data-zip-code="true"
+                              >         
+                         </script>
+                            
+                         
+                    <!--*--ชำระเงิน  *Token*-->
+               <!--TODO--amount *100  -->
+                    <input type="hidden" name="amount" value="<%=cart.total *100%>">     
+               </form>
+
+          <%}else{%>
+               <div class="no_legth text-center ">
+                    <h3 class="alert alert-warning "><strong>ไม่มีข้อมูลสินค้า</strong></h3>
+               </div>
+          <%}%>
+
+     </div>
+</body>
+</html>

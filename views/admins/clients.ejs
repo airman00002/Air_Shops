@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+
+<body>
+     <%-include ../layout%>
+          <div class="container">
+
+               <div class="row">
+                    <!--* sidebar  ------------------>
+                    <%-include ../sidebar%>
+                         <div class="col-lg-9">
+                              <div class="text-center my-4">
+                                   <h3><strong>รายละเอียดลูกค้า</strong></h3>
+                              </div>
+                              <div class="table my-4">
+                                   <table class="table">
+                                        <thead class="thead-light text-center">
+                                             <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">ชื่อลูกค้า</th>
+                                                  <th scope="col">อีเมลล์</th>
+                                                  <th scope="col">ชื่อจริง</th>
+                                                  <th scope="col">นามสกุล</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody class="text-center text-secondary">
+                                             <%for(let i=0;i<customers.length;i++){%>
+                                                  <tr>
+                                                       <th scope="row"><%=(i+1)%></th>
+                                                       <td><%=customers[i].username%></td>
+                                                       <td><%=customers[i].email%></td>
+                                                       <td><%=customers[i].fname%></td>
+                                                       <td><%=customers[i].lname%></td>
+                                                  </tr>
+                                             <%}%>
+                                        </tbody>
+                                   </table>
+                              </div>
+
+
+
+                         </div>
+
+               </div>
+          </div>
+
+</body>
+
+</html>

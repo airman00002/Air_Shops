@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Air_Shops</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%include layout%>
+
+    <div class="container">
+      <div class="messages offset-lg-4 col-lg-4 my-4">
+        <%- messages() %>
+       </div>
+    </div>
+  </body>
+
+  <script>
+    $('#messages').addClass('alert alert-success')
+  </script>
+</html>

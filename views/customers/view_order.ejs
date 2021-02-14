@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/style.css">
+     <title>Air_Shops</title>
+</head>
+<body>
+     <%-include ../layout%>
+     <div class="container">
+          <div class="head-title my-4 text-center">
+               <h2>ประวัติการสั่งซื้อสินค้า</h2>
+          </div>
+
+          <div class="table">
+               <table class="table">
+                    <thead class="thead-light text-center">
+                      <tr>
+                        <th scope="col"><h4>ใบสั่งซื้อ</h4></th>
+                        <th scope="col"><h4>วันที่สั่งซื้อสินค้า</h4></th>
+                        <th scope="col"><h4>ยอดชำระเงิน</h4></th>
+                        <th scope="col"><h4>ดูรายละเอียด</h4></th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                         <%orders.forEach(order=>{%>
+                         <tr>
+                         <th scope="row">1</th>
+                         <td><%=moment(order.date).format('DD-MM-YY')%></td>
+                         <td><%=formatNumber(order.total)%> บาท</td>
+                         <td><a href="/customers/view_order_history/<%=order._id%>" class="btn btn-outline-warning">รายละเอียด</a></td>
+                         </tr>
+                     <%})%>
+                    </tbody>
+                  </table>
+          </div>
+     </div>
+</body>
+</html>
