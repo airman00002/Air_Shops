@@ -54,7 +54,7 @@ module.exports.ShowProductById = async(id)=>{
 
 //*--------------show data By name----------------
 module.exports.getProductByName = async(name)=>{
-     var query = {name:name}
+     var query = {name:new RegExp(name)}
      try {
           return await Product.find(query)
      } catch (error) {
