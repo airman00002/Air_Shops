@@ -38,7 +38,7 @@ module.exports.categoriesById = async(id)=>{
 //*----------สร้าง Category ใหม่
 module.exports.create_Category = async (name)=>{
     try {
-          await name.save(callback)
+          await name.save()
     } catch (error) {
           console.log(error.message) 
     }
