@@ -1,6 +1,6 @@
 let mongo = require('mongodb')
 let mongoose = require('mongoose')
-let url = ('mongodb://localhost:27017/Air_ShopsDB')
+let url = ('mongodb+srv://admin:123456abcd@react-mern-node.z6bkl.mongodb.net/Air_ShopsDB?retryWrites=true&w=majority')
 mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true})
 
 
