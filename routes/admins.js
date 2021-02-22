@@ -177,7 +177,7 @@ router.post('/products/add',upload.single('img'),
         res.render('admins/add_product',{errors:errors,categories:category,user:usertype})
     }else{
       if(req.file){
-        var img_file = req.file.filename
+        var img_file = req.file
       }else{
         var img_file = "No Image"
       }
@@ -235,7 +235,7 @@ router.post('/products/edit',upload.single('img'),
     }else{
 
       if(req.file){
-        var img_file = req.file.filename
+        var img_file = req.file
 
         const new_Product = new Product({
           id:req.body.id,
