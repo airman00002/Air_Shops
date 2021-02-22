@@ -11,7 +11,7 @@ var adminsRouter = require('./routes/admins');
 
 
 
-
+const port = process.env.PORT || 3000;
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session')
