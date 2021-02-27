@@ -61,7 +61,7 @@
                               <%orders.order_item.forEach(item=>{%>
                                    <tr>
                                         
-                                        <td> <a href="/customers/product/<%=item.id%>"><img src="/images/<%=item.img%>" width="40px" height="40px"></a></td>
+                                        <td> <a href="/customers/product/<%=item.id%>"><img src="<%=item.img%>" width="40px" height="40px"></a></td>
                                         <td><%=item.name%></td>
                                         <td><%=formatNumber(item.price)%> บาท</td>
                                         <td><%=item.quantity%></td>

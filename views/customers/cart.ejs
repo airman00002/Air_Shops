@@ -31,7 +31,7 @@
                          <%for(let i=0;i<cart.item.length;i++){%>
                               <tr>
                                    <th scope="row"><%=(i+1)%></th>
-                                   <th><img src="/images/<%=cart.item[i].img%>" width="35px" height="35px"></th>
+                                   <th><img src="<%=cart.item[i].img%>" width="35px" height="35px"></th>
                                    <td><a href="/customers/product/<%=cart.item[i].id%>"><%=cart.item[i].name%></a></td>
                                    <td><%=cart.item[i].quantity%></td>
                                    <td class="text-secondary"><%=formatNumber(cart.item[i].price)%> บาท</td>

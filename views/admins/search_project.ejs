@@ -25,7 +25,7 @@
                                    <%Object.values(products).forEach(product=>{%>
                                         <div class="col-lg-4 col-md-6  mb-4">
                                              <div class="card h-100" style="border-radius: 30px;overflow: hidden;">
-                                                  <a href="/admins/product/<%=product._id%>"><img src="/images/<%=product.img%>" width="300px" height="300px" class="card-img-top"></a>    
+                                                  <a href="/admins/product/<%=product._id%>"><img src="<%=product.img%>" width="300px" height="300px" class="card-img-top"></a>    
                                                   <div class="card-body">
                                                        <a href="/admins/product/<%=product._id%>"><h4 class="card-title"><%=product.name%></h4></a>
                                                        <h5><%=formatNumber(product.price)%> ฿</h5>
