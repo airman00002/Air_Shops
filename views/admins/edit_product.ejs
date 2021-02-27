@@ -31,7 +31,7 @@
                               <%}%>
                          </div>
                          <!--*---------------form--------->
-                         <form action="/admins/products/edit" method="post" >
+                         <form action="/admins/products/edit" method="post" enctype='multipart/form' >
                               <div class="form-group">
                                    <label><strong>ชื่อสินค้า</strong></label>
                                    <input type="text" name="name" class="form-control text-warning" value="<%=products.name%>">
