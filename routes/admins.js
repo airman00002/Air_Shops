@@ -11,17 +11,17 @@ const Categories = require('../model/categories')
 const {body,validationResult} = require('express-validator')
 
 //TODO-----multer-------------------
-const multer = require('multer')
-let storage =  multer.diskStorage({
-  destination:(req,file,callback)=>{
-    callback(null,'./public/images')
-  },
-  filename:(req,file,callback)=>{
-    callback(null,Date.now()+'.jpg')
-  }
-})
+// const multer = require('multer')
+// let storage =  multer.diskStorage({
+//   destination:(req,file,callback)=>{
+//     callback(null,'./public/images')
+//   },
+//   filename:(req,file,callback)=>{
+//     callback(null,Date.now()+'.jpg')
+//   }
+// })
 
-const upload = multer({storage:storage})
+// const upload = multer({storage:storage})
 
 
 
@@ -231,7 +231,7 @@ router.post('/products/edit', body('img','กรูณาระบุ URL').not(
     }else{
 
       if(req.body.img){
-        var img_file = req.file.filename
+        // var img_file = req.file.filename
 
         const new_Product = new Product({
           id:req.body.id,
