@@ -31,7 +31,7 @@
                               <%}%>
                          </div>
                          <!--*---------------form--------->
-                         <form action="/admins/products/edit" method="post" enctype="multipart/form-data">
+                         <form action="/admins/products/edit" method="post" >
                               <div class="form-group">
                                    <label><strong>ชื่อสินค้า</strong></label>
                                    <input type="text" name="name" class="form-control text-warning" value="<%=products.name%>">
@@ -58,7 +58,7 @@
                               </div>
                               <div class="form-group">
                                    <label><strong>ภาพสินค้า</strong></label>
-                                   <input type="file" name="img" class="form-control text-warning" value="<%=products.img%>">
+                                   <input type="url" name="img" class="form-control text-warning" value="<%=products.img%>">
                               </div>
                               <div class="form-group">
                                    <input type="hidden" name="id" class="form-control text-warning" value="<%=products._id%>">

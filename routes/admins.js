@@ -162,7 +162,7 @@ router.post('/categories/add',body('name','กรูณาระบุหมว�
 //*----------Add_categories-----------------------------------------------
 
 //TODO----------Add_products-----------------------------------------------
-router.post('/products/add',upload.single('img'),
+router.post('/products/add',body('img','กรูณาระบุ URL').not().isEmpty(),
                             body('name','กรูณาระบุชื่อสินค้า').not().isEmpty(),
                             body('description','กรูณาระบุรายละเอียด').not().isEmpty(),
                             body('price','กรูณาระบุราคา').not().isEmpty(),
@@ -176,18 +176,14 @@ router.post('/products/add',upload.single('img'),
       let category = await Categories.getCategories()
         res.render('admins/add_product',{errors:errors,categories:category,user:usertype})
     }else{
-      if(req.file){
-        var img_file = req.file.filename
-      }else{
-        var img_file = "No Image"
-      }
+      
 
         const new_Product = new Product({
           name:req.body.name,
           description:req.body.description,
           price:req.body.price,
           category:req.body.category,
-          img:img_file
+          img:req.body.img
         })
         console.log(new_Product)
         await Product.create_Product(new_Product) 
@@ -221,7 +217,7 @@ router.post('/categories/edit',body('name','กรูณาระบุหมว
 });
 
 //TODO--------post--Products_edit-----------------------------------------------
-router.post('/products/edit',upload.single('img'),
+router.post('/products/edit', body('img','กรูณาระบุ URL').not().isEmpty(),
                               body('name','กรูณาระบุชื่อสินค้า').not().isEmpty(),
                               body('description','กรูณาระบุรายละเอียด').not().isEmpty(),
                               body('price','กรูณาระบุราคา').not().isEmpty(),
@@ -234,7 +230,7 @@ router.post('/products/edit',upload.single('img'),
         res.render('admins/add_product',{errors:errors,categories:category})
     }else{
 
-      if(req.file){
+      if(req.body.img){
         var img_file = req.file.filename
 
         const new_Product = new Product({
@@ -243,7 +239,7 @@ router.post('/products/edit',upload.single('img'),
           description:req.body.description,
           price:req.body.price,
           category:req.body.category,
-          img:img_file
+          img:req.body.img
         })
         await Product.update_Product(new_Product)
         res.redirect('/admins/home')
